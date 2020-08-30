@@ -21,7 +21,7 @@ func main() {
 		fp, err := os.Open(filepath)
 		if err != nil {
 			fmt.Fprintln(os.Stderr, "ファイルを開くことができませんでした:", err)
-			return
+			os.Exit(1)
 		}
 		scanner := bufio.NewScanner(fp)
 		for scanner.Scan() {
@@ -34,7 +34,7 @@ func main() {
 		}
 		if err := scanner.Err(); err != nil {
 			fmt.Fprintln(os.Stderr, "読み込みに失敗しました:", err)
-			return
+			os.Exit(1)
 		}
 		fp.Close() // todo: deferを使ってファイルを閉じる
 
